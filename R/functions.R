@@ -7,10 +7,10 @@
 #'
 #' @export
 load_sample_data <- function() {
-  data("inst/Met_GU.rda")
-  data("inst/Met_Group_GU.rda")
-  data("inst/Met_name_GU.rda")
-  data("inst/pvalue_M_GU.rda")
+  data("Met_GU")
+  data("Met_Group_GU")
+  data("Met_name_GU")
+  data("pvalue_M_GU")
 }
 
 
