@@ -3,12 +3,12 @@
 \docType{data}
 \name{Met_Group_GU}
 \alias{Met_Group_GU}
-\title{Class label.}
+\title{Group label.}
 \format{A data frame with 1 row and 120 (subjects) columns.}
 \usage{
 Met_Group_GU
 }
 \description{
-A dataset containing class label of each subject
+A dataset containing group information group 1: 0; group 2: 1.
 }
 \keyword{datasets}
