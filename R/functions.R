@@ -7,10 +7,10 @@
 #'
 #' @export
 load_sample_data <- function() {
-  load("inst/Met_GU.rda", envir = .GlobalEnv)
-  load("inst/Met_Group_GU.rda", envir = .GlobalEnv)
-  load("inst/Met_name_GU.rda", envir = .GlobalEnv)
-  load("inst/pvalue_M_GU.rda", envir = .GlobalEnv)
+  data("Met_GU.rda")
+  data("Met_Group_GU.rda")
+  data("Met_name_GU.rda")
+  data("pvalue_M_GU.rda")
 }
 
 
