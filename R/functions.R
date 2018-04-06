@@ -60,7 +60,7 @@ load_sample_data <- function() {
 select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
                        method = NULL, partial = NULL, p_val = NULL) {
 
-  source("helper_function.R")
+  source("cx30/INDEED/R/helper_function.R")
 
   data_bind <- rbind(x, class_label)
   raw_group_1 <- data_bind[,data_bind[nrow(data_bind),] == 0][1:(nrow(data_bind) - 1),]  # Group 1: p*n1
