@@ -7,9 +7,9 @@
 "Met_GU"
 
 
-#' Class label.
+#' Group label.
 #'
-#' A dataset containing class label of each subject
+#' A dataset containing group information group 1: 0; group 2: 1.
 #'
 #' @format A data frame with 1 row and 120 (subjects) columns.
 "Met_Group_GU"
