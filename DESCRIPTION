@@ -1,0 +1,27 @@
+Package: INDEED
+Type: An R package
+Title: An Implementation of Integrated Differential Expression and Differential Network Analysis for Biomarker Candidate Selection
+Version: 0.99.1
+Author: Chaohui Xu <chaohx92@gmail.com>
+Maintainer: Chaohui Xu <chaohx92@gmail.com>,
+            Yiming Zuo <yimingzuo@gmail.com>
+Description: An Implementation of Integrated Differential Expression and Differential Network Analysis of Omic Data. The differential network is obtained based on partial correlation or correlation.
+URL: https://github.com/cx30/INDEED
+BugReports: https://github.com/cx30/INDEED/issues
+License: Artistic-2.0
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Imports:  utils (>= 3.4.3),
+          stats (>= 3.4.3)
+Suggests: knitr (>= 1.19),
+          rmarkdown (>= 1.8),
+          testthat (>= 2.0.0)
+Depends:  glasso (>= 1.8)
+VignetteBuilder: knitr
+biocViews: Software, 
+           ResearchField,
+           BiologicalQuestion, 
+           StatisticalMethod,
+           DifferentialExpression,
+           Network
