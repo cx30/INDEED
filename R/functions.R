@@ -7,7 +7,7 @@
 #'
 #' @export
 load_sample_data <- function() {
-  load("Met_GU.rda")
+  load("Met_GU")
 }
 
 
