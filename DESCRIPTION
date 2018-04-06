@@ -6,7 +6,7 @@ Author: Chaohui Xu <chaohx92@gmail.com>
 Maintainer: Chaohui Xu <chaohx92@gmail.com>,
             Yiming Zuo <yimingzuo@gmail.com>
 Description: An Implementation of Integrated Differential Expression and Differential Network Analysis of Omic Data. The differential network is obtained based on partial correlation or correlation.
-URL: https://github.com/cx30/INDEED
+URL: https://github.com/cx30/INDEE
 BugReports: https://github.com/cx30/INDEED/issues
 License: Artistic-2.0
 Encoding: UTF-8
