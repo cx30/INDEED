@@ -7,10 +7,10 @@
 #'
 #' @export
 load_sample_data <- function() {
-  data("Met_GU")
-  data("Met_Group_GU")
-  data("Met_name_GU")
-  data("pvalue_M_GU")
+  devtools::use_data("Met_GU", package = "INDEED")
+  devtools::use_data("Met_Group_GU", package = "INDEED")
+  devtools::use_data("Met_name_GU", package = "INDEED")
+  devtools::use_data("pvalue_M_GU", package = "INDEED")
 }
 
 
