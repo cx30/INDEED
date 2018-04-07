@@ -12,7 +12,7 @@ BugReports: http://github.com/cx30/INDEED/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
-Imports:  utils (>= 3.4.3),
+Imports:  utils (>= 3.3.1),
           stats (>= 3.3.1)
 Suggests: knitr (>= 1.19),
           rmarkdown (>= 1.8),
