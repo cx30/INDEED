@@ -2,7 +2,7 @@
 % Please edit documentation in R/functions.R
 \name{load_sample_data}
 \alias{load_sample_data}
-\title{Load the sample data}
+\title{Load the demo data}
 \usage{
 load_sample_data()
 }
@@ -10,7 +10,7 @@ load_sample_data()
 A list of sample data sets
 }
 \description{
-Load the sample data sets from GU cohorts.
+Load the GU cohorts demo data set.
 }
 \examples{
 load_sample_data()

@@ -25,7 +25,7 @@ This R package will output a csv. file containing information such as p-values, 
 
 The **INDEED** package doesn't get loaded automatically, so remember to load it first:
 
-```{r init}
+```
 library(INDEED)
 ```
 Also, don't forget to load **glasso** as **INDEED** depends on it.
@@ -190,7 +190,7 @@ The table below is part of the output:
 
 
 ```{r, echo=FALSE, results='asis'}
-x <- read.csv("../data/INDEED_result.csv", header = FALSE)
+x <- read.csv("../inst/INDEED_result.csv", header = FALSE)
 names(x) <- NULL
 knitr::kable(head(x, 11))
 ```
@@ -206,10 +206,7 @@ There are more examples in the **More Examples** section below.
 To see the demo data sets, use `load_sample_data` function:
 ```{r, results='asis'}
 load_sample_data <- function() {
-  load("../data/Met_GU.rda", envir = .GlobalEnv)
-  load("../data/Met_Group_GU.rda", envir = .GlobalEnv)
-  load("../data/Met_name_GU.rda", envir = .GlobalEnv)
-  load("../data/pvalue_M_GU.rda", envir = .GlobalEnv)
+  load(file = "../data/Demo_data.rda", envir = .GlobalEnv)
 }
 
 load_sample_data()
@@ -229,7 +226,7 @@ knitr::kable(Met_GU, caption = "**Met_GU**")
 - pvalue_M_GU (i.e. **p_val** change in expression level of a single biomolecule between distinct biological group). Here, only the first 10 metabolites are shown.
 
 ```{r, echo=FALSE, results='asis'}
-p_val <- read.table("../data/pvalue_M_GU.csv", sep = ",", header = TRUE)
+p_val <- read.table("../inst/pvalue_M_GU.csv", sep = ",", header = TRUE)
 knitr::kable(head(p_val, 10), caption = "**P-values**")     # display only the first 10 metabolites associated with their p-values
 ```
 
@@ -268,7 +265,7 @@ select_sig(x = Met_GU, class_label = Met_Group_GU, Met_name = Met_name_GU, parti
 By calling above function, the differential network is obtained based on Pearson correlation coefficient. And the table below is part of the csv. file output.
 
 ```{r, echo=FALSE, results='asis'}
-x <- read.csv("../data/INDEED_result_pearson.csv", header = FALSE)
+x <- read.csv("../inst/INDEED_result_pearson.csv", header = FALSE)
 names(x) <- NULL
 knitr::kable(head(x, 11))
 ```
@@ -280,7 +277,7 @@ select_sig(x = Met_GU, class_label = Met_Group_GU, Met_name = Met_name_GU, metho
 By calling above function, the differential network is obtained based on Spearman correlation coefficient. And the table below is part of the csv. file output.
 
 ```{r, echo=FALSE, results='asis'}
-x <- read.csv("../data/INDEED_result_spearman.csv", header = FALSE)
+x <- read.csv("../inst/INDEED_result_spearman.csv", header = FALSE)
 names(x) <- NULL
 knitr::kable(head(x, 11))
 ```

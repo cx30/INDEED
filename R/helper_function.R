@@ -20,7 +20,7 @@ compute_cor <- function(data_group_2, data_group_1, type_of_cor) {
     cor_group_2 <- cor(data_group_2, method = "pearson")
     cor_group_1 <- cor(data_group_1, method = "pearson")
 
-  } else {
+  } else if (type_of_cor == "spearman") {
     cor_group_2 <- cor(data_group_2, method = "spearman")
     cor_group_1 <- cor(data_group_1, method = "spearman")
   }

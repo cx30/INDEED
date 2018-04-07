@@ -1,17 +1,13 @@
-#' @title Load the sample data
+#' @title Load the demo data
 #'
-#' @description Load the sample data sets from GU cohorts.
+#' @description Load the GU cohorts demo data set.
 #' @return A list of sample data sets
 #' @examples
 #' load_sample_data()
 #'
 #' @export
 load_sample_data <- function() {
-  load("INDEED/data/Met_GU.rda", envir = .GlobalEnv)
-  load("INDEED/data/Met_Group_GU.rda", envir = .GlobalEnv)
-  load("INDEED/data/Met_name_GU.rda", envir = .GlobalEnv)
-  load("INDEED/data/pvalue_M_GU.rda", envir = .GlobalEnv)
-
+  load(file = "data/Demo_data.rda", envir = .GlobalEnv)
 }
 
 
@@ -61,7 +57,7 @@ load_sample_data <- function() {
 select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
                        method = NULL, partial = NULL, p_val = NULL) {
 
-  source("INDEED/R/helper_function.R")
+  source("R/helper_function.R")
 
   data_bind <- rbind(x, class_label)
   raw_group_1 <- data_bind[,data_bind[nrow(data_bind),] == 0][1:(nrow(data_bind) - 1),]  # Group 1: p*n1
