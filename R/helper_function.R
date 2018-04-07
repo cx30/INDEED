@@ -13,6 +13,7 @@
 #'
 #' @return A list of correlation matrix for both group 1 and group 2
 #'
+#' @export
 
 # Compute Pearson correlation or Spearman correlation
 compute_cor <- function(data_group_2, data_group_1, type_of_cor) {
