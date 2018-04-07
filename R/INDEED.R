@@ -14,7 +14,7 @@
 #' using logistic regression.
 #'
 #' @section load_sample_data function:
-#' The load_sample_data function will load the sample data sets to run the select_sig function.
+#' The load_sample_data function will load the demo data sets.
 #'
 #' @docType package
 #' @name INDEED
