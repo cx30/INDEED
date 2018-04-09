@@ -28,7 +28,7 @@ The **INDEED** package doesn't get loaded automatically, so remember to load it 
 ```
 library(INDEED)
 ```
-Also, don't forget to load **glasso** as **INDEED** depends on it.
+`glasso` function will also be loaded as **INDEED** depends on it to obtain the sparse differential network.
 
 
 ## Using the function `select_sig()` 
@@ -39,11 +39,9 @@ To use the function `sig_select()`, users will have these data sets in hand:
 - A binary array with group 1: 0; group 2: 1
 - The path to .csv file containing p-values obtained from DE analysis (optional)
 
-To see the demo data, use `load_sample_data()`. And the demo data is presented in the **Demo Data** section below.
+The demo data is presented in the **Demo Data** section below. It will be automatically loaded with the package.
 
-```
-load_sample_data()
-```
+
 Now, users can implement `select_sig()` to see how it works within sample data sets. One good thing about this package is that it gives users great flexibility. For example, although it is known that correlation tends to generate over-complicated networks, the `select_sig()` will still let users to choose between using correlation or partial correlation to generate networks. Setting `partial = TRUE` will generate the sparse differential network using partial correlation. By setting `partial = FALSE`, users will get network based on correlation. However, If users forgot to specify the `partial` parameter, there will be an error message: `Error in if (partial == TRUE) { : argument is of length zero`. In addtion, once `partial = TRUE` is specified, users will be able to interact with console to select the regularization parameter **rho** in order to obtain the sparse differential network. Users will be prompted to choose their own **rho**. If answered [n], another question will pop up asking the users whether they want to select the **rho** based on the minimum rule [y] or one standard error rule [n]. Also, network generated based on correlation can be either Pearson or Spearman correlation. The default is Pearson correlation. `method = "spearman"` will produce a Spearman correlation matrix. For both correlation and partial correlation, users get to determine the permutation times based on their preferences. 
 
 Remember, a file containing p-values is optional as p-values will be calculated using logistic regression if `p_val = NULL`.
@@ -203,17 +201,6 @@ There are more examples in the **More Examples** section below.
 
 
 ## Demo Data
-To see the demo data sets, use `load_sample_data` function:
-```{r, results='asis'}
-load_sample_data <- function() {
-  load(file = "../data/Met_GU.rda", envir = .GlobalEnv)
-  load(file = "../data/Met_Group_GU.rda", envir = .GlobalEnv)
-  load(file = "../data/Met_name_GU.rda", envir = .GlobalEnv)
-  load(file = "../data/pvalue_M_GU.rda", envir = .GlobalEnv)
-}
-
-load_sample_data()
-```
 
 - Met_GU (**x**): The data set contains 120 patients as columns and 39 metabolites as rows. Here, 29 rows and 110 columns are omitted.
 
@@ -233,21 +220,21 @@ p_val <- read.table("../inst/pvalue_M_GU.csv", sep = ",", header = TRUE)
 knitr::kable(head(p_val, 10), caption = "**P-values**")     # display only the first 10 metabolites associated with their p-values
 ```
 
-- Met_Group_GU (i.e. **class_label**, 0: group 1; 1: group 2)
+- Met_Group_GU (i.e. **class_label**, group 1:0; group 2:1)
 
 ```{r, echo=FALSE, results='asis'}
 
-load_sample_data()
+
 Met_Group_GU <- get("Met_Group_GU")[1:10]
 knitr::kable(Met_Group_GU)   # Displying the fisrt 10 data in Met_Group_GU
 ```
 
-An error message: `Error in Data[testIndexes, ] : subscript out of bounds` will occur if this **class_lable** is not provided.
+An error message: `Error in Data[testIndexes, ] : subscript out of bounds` will occur if this **class_lable** is missing.
 
 - Met_name_GU (i.e. **Met_name**)
 
 ```{r, echo=FALSE, results='asis'}
-load_sample_data()
+
 Met_name_GU <- get("Met_name_GU")[1:10]
 knitr::kable(Met_name_GU)     # Displying the fisrt 10 data in Met_name_GU
 ```
