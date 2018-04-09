@@ -6,8 +6,8 @@
 \alias{INDEED-package}
 \title{INDEED: A package for biomarker candidate prioritization.}
 \description{
-The INDEED package provides two categories of important functions:
-select_sig and load_sample_data.
+The INDEED package provides a important function below:
+select_sig
 }
 \section{select_sig function}{
 
@@ -19,10 +19,5 @@ In addtion, the default method for the correlation part is "pearson". Otherwise,
 to obtain Spearman correlation coefficient. The \bold{p_val}: gives users more flexibility by allowing
 the users to provide their own p-value tables. If NULL, p-values will be calculated for the users
 using logistic regression.
-}
-
-\section{load_sample_data function}{
-
-The load_sample_data function will load the demo data sets.
 }
 
