@@ -1,21 +1,3 @@
-#' @title Load the demo data
-#'
-#' @description Load the GU cohorts demo data set.
-#' @return A list of sample data sets
-#' @examples
-#' load_sample_data()
-#'
-#' @export
-load_sample_data <- function() {
-  load(file = "data/Met_GU.rda", envir = .GlobalEnv)
-  load(file = "data/Met_Group_GU.rda", envir = .GlobalEnv)
-  load(file = "data/Met_name_GU.rda", envir = .GlobalEnv)
-  load(file = "data/pvalue_M_GU.rda", envir = .GlobalEnv)
-}
-
-
-
-
 #' @title Select biomarker candidates
 #'
 #' @description A method that integrates differential expression (DE) analysis
