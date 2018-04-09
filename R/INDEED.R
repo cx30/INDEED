@@ -1,7 +1,7 @@
 #' INDEED: A package for biomarker candidate prioritization.
 #'
-#' The INDEED package provides two categories of important functions:
-#' select_sig and load_sample_data.
+#' The INDEED package provides a important function below:
+#' select_sig
 #'
 #' @section select_sig function:
 #' The select_sig function provides the users with few options. By setting \bold{partial} = TRUE,
@@ -13,8 +13,6 @@
 #' the users to provide their own p-value tables. If NULL, p-values will be calculated for the users
 #' using logistic regression.
 #'
-#' @section load_sample_data function:
-#' The load_sample_data function will load the demo data sets.
 #'
 #' @docType package
 #' @name INDEED
