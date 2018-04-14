@@ -67,7 +67,7 @@ select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
     ## Apply grapihcal LASSO given data_group_1 and data_group_2
     #  Group 1 first
     n_fold <- 5 # number of folds
-    rho = exp(seq(log(0.6), log(0.01), length.out = 20))
+    rho <- exp(seq(log(0.6), log(0.01), length.out = 20))
     # draw error curve
     error <- choose_rho(data_group_1, n_fold, rho)
     title(main = "Group 1: Error curve using corss validation")
@@ -88,6 +88,9 @@ select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
     min_rule <- rho[error$log.cv == min(error$log.cv)]   # rho based on minumum rule
 
     # Provide users with an opportunity to interact within the function
+    print("The list of rhos:")
+    print(rho)
+
     rho <- readline("Choose your own regularization parameter rho for group 1? [y/n]: ")
     if (rho == "y") {
       your_rho <- readline(prompt = "Enter your own choice of rho: ")
@@ -120,7 +123,7 @@ select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
 
     ## Group 2 second
     n_fold <- 5 # number of folds
-    rho = exp(seq(log(0.6), log(0.01), length.out = 20))
+    rho <- exp(seq(log(0.6), log(0.01), length.out = 20))
     # draw error curve
     error <- choose_rho(data_group_2, n_fold, rho)
     title(main = "Group 2: Error curve using corss validation")
