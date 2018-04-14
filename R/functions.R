@@ -88,7 +88,7 @@ select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
     min_rule <- rho[error$log.cv == min(error$log.cv)]   # rho based on minumum rule
 
     # Provide users with an opportunity to interact within the function
-    readline("The list of rhos for group 1:")
+    print("The list of rhos for group 1:")
     print(rev(rho))
 
     rho <- readline("Choose your own regularization parameter rho for group 1? [y/n]: ")
@@ -144,7 +144,7 @@ select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
     min_rule <- rho[error$log.cv == min(error$log.cv)]   # rho based on minumum rule
 
     # Provide users with an opportunity to interact within the function
-    readline("The list of rhos for group 2:")
+    print("The list of rhos for group 2:")
     print(rev(rho))
 
     rho <- readline("Choose your own regularization parameter rho for group 2? [y/n]: ")
