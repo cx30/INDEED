@@ -178,7 +178,7 @@ select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
     diff[1:10, 1:10]
 
     ## Permutation test using partial correlation
-    num_of_permutations_pc <- readline(prompt = "Enter your desired number of permutations to build differential network using partial correlation: ")
+    num_of_permutations_pc <- readline(prompt = "Enter your desired number of permutations to build differential network using partial correlation [Default: 1000]: ")
     m <- as.numeric(num_of_permutations_pc)
     diff_p <- permutation_pc(m, p, n_group_1, n_group_2, data_group_1, data_group_2, rho_group_1_opt, rho_group_2_opt)
     rm(m, thres, rho_group_1_opt, rho_group_2_opt, num_of_permutations_pc)
@@ -208,7 +208,7 @@ select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
     diff[1:10, 1:10]
 
     # Permutation test
-    num_of_permutations_c <- readline(prompt = "Enter your desired number of permutations to build differential network using correlation: ")
+    num_of_permutations_c <- readline(prompt = "Enter your desired number of permutations to build differential network using correlation [Default: 1000]: ")
     m <- as.numeric(num_of_permutations_c)
     diff_p <- permutation_cor(m, p, n_group_1, n_group_2, data_group_1, data_group_2, type_of_cor = method)
     rm(m, thres, num_of_permutations_c)
