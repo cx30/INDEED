@@ -51,7 +51,7 @@ The following example demonstrates how to use `select_sig` function:
 
 
 ```
-select_sig(x = Met_GU, class_label = Met_Group_GU, Met_name = Met_name_GU, method = NULL, partial = TRUE, p_val = NULL)
+select_sig(x = Met_GU, class_label = Met_Group_GU, Met_name = Met_name_GU, partial = TRUE, method = NULL, p_val = NULL)
 ```
 
 In this case, the sparse differential network is based on partial correlation and p-value for each biomolecule is calculated for users. Also, **rho** is picked based on one standard error rule and number of permutations is set to 1000.
@@ -262,7 +262,7 @@ knitr::kable(head(x, 11))
 
 ### Example 2
 ```
-select_sig(x = Met_GU, class_label = Met_Group_GU, Met_name = Met_name_GU, method = "spearman", partial = FALSE, p_val = "data/pvalue_M_GU.csv")
+select_sig(x = Met_GU, class_label = Met_Group_GU, Met_name = Met_name_GU, partial = FALSE, method = "spearman", p_val = "data/pvalue_M_GU.csv")
 ```
 By calling above function, the differential network is obtained based on Spearman correlation coefficient. And the table below is part of the csv. file output.
 
