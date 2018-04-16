@@ -5,14 +5,13 @@
 #'   survival time prediction.
 #' @param x a data frame consists of data from group 1 and group 2.
 #' @param class_label a binary array with 0: group 1; 1: group 2.
-#'
 #' @param Met_name an array of ID.
-#' @param method a character string indicating which correlation coefficient is
-#'   to be computed. One of "pearson" (default) or "spearman".
 #' @param partial logical. If TRUE the sparse differential network will be obtained
-#'   by using partial correlation. If FALSE, correlation.
+#'    by using partial correlation. If FALSE, correlation.
+#' @param method a character string indicating which correlation coefficient is
+#'    to be computed. One of "pearson" (default) or "spearman".
 #' @param p_val a path to either a data frame or matrix that contains p-values
-#'   or NULL.
+#'    or NULL.
 #'
 #' @inheritParams compute_cor
 #' @inheritParams compute_par
@@ -31,7 +30,7 @@
 #'
 #' @examples
 #' select_sig(x = Met_GU, class_label = Met_Group_GU, Met_name = Met_name_GU,
-#'                                        method = NULL, partial = TRUE, p_val = NULL)
+#'                                      partial = NULL, method = NULL, p_val = NULL)
 #'
 #' @importFrom glasso glasso
 #' @importFrom utils write.csv read.table write.table txtProgressBar setTxtProgressBar
@@ -41,7 +40,7 @@
 
 
 select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
-                       method = NULL, partial = NULL, p_val = NULL) {
+                       partial = NULL, method = NULL,  p_val = NULL) {
 
 
 
