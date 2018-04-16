@@ -5,7 +5,7 @@
 #'   survival time prediction.
 #' @param x a data frame consists of data from group 1 and group 2.
 #' @param class_label a binary array with 0: group 1; 1: group 2.
-#' @param Met_name an array of ID.
+#' @param id an array of biomolecule ID.
 #' @param partial logical. If TRUE the sparse differential network will be obtained
 #'    by using partial correlation. If FALSE, correlation.
 #' @param method a character string indicating which correlation coefficient is
@@ -29,7 +29,7 @@
 #'    for each biomarker candidate
 #'
 #' @examples
-#' select_sig(x = Met_GU, class_label = Met_Group_GU, Met_name = Met_name_GU,
+#' select_sig(x = Met_GU, class_label = Met_Group_GU, id = Met_name_GU,
 #'                                      partial = NULL, method = NULL, p_val = NULL)
 #'
 #' @importFrom glasso glasso
@@ -39,7 +39,7 @@
 #' @export
 
 
-select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
+select_sig <- function(x = NULL, class_label = NULL, id = NULL,
                        partial = NULL, method = NULL,  p_val = NULL) {
 
 
@@ -265,7 +265,7 @@ select_sig <- function(x = NULL, class_label = NULL, Met_name = NULL,
   # If the p-value table is not provided by users
   if (is.null(p_val) == TRUE) {
     # Calculate p-values using logistic regression if p-values are not provided by users
-    pvalue <- pvalue_logit(x, class_label, Met_name)
+    pvalue <- pvalue_logit(x, class_label, id)
     p.value <- pvalue$p.value
   } else {     # If the p-value matrix is provided
     pvalue <- read.table(p_val, sep = ",", header = TRUE)
