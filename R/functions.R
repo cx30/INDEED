@@ -95,11 +95,11 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
             rho_group_1_opt <- as.numeric(your_rho)
             print(rho_group_1_opt)
         } else if (rho == "n") {
-        rho_based_on_rule <- readline(prompt = "rho based on minimum rule? [y/n]: ")
-            if (rho_based_on_rule == "y") {
+        rho_based_on_rule <- readline(prompt = "rho based on minimum rule/ rho based on one standard error rule [m/o]: ")
+            if (rho_based_on_rule == "m") {
             rho_group_1_opt <- min_rule
             print(rho_group_1_opt)
-            } else {                # select rho based on one standard rule
+            } else if (rho_based_on_rule == "o") {                # select rho based on one standard rule
             rho_group_1_opt <- max(rho_one_standard)
             print(rho_group_1_opt)
             }
@@ -151,11 +151,11 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
             rho_group_2_opt <- as.numeric(your_rho)
             print(rho_group_2_opt)
         } else if (rho == "n") {
-            rho_based_on_rule <- readline(prompt = "rho based on minimum rule? [y/n]: ")
-            if (rho_based_on_rule == "y") {
+            rho_based_on_rule <- readline(prompt = "rho based on minimum rule/ rho based on one standard error rule [m/o]: ")
+            if (rho_based_on_rule == "m") {
                 rho_group_2_opt <- min_rule
                 print(rho_group_2_opt)
-            } else {
+            } else if (rho_based_on_rule == "o") {
                 rho_group_2_opt <- max(rho_one_standard)
                 print(rho_group_2_opt)
             }
