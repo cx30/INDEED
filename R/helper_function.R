@@ -17,7 +17,7 @@
 
 # Compute Pearson correlation or Spearman correlation
 compute_cor <- function(data_group_2, data_group_1, type_of_cor) {
-    if (is.null(type_of_cor)) {
+    if (is.null(type_of_cor) || type_of_cor == "pearson") {
         cor_group_2 <- cor(data_group_2, method = "pearson")
         cor_group_1 <- cor(data_group_1, method = "pearson")
 
