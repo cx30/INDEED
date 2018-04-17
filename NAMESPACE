@@ -2,6 +2,10 @@
 
 export(select_sig)
 importFrom(glasso,glasso)
+importFrom(graphics,abline)
+importFrom(graphics,lines)
+importFrom(graphics,plot)
+importFrom(graphics,title)
 importFrom(stats,cor)
 importFrom(stats,glm)
 importFrom(stats,qnorm)
