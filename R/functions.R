@@ -88,17 +88,17 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
         print("The list of rhos for group 1:")
         print(rev(rho))
 
-        rho <- readline("Choose your own regularization parameter rho for group 1? [y/n]: ")
+        rho <- readline("Choose your own regularization parameter rho for group 1 (Default: n)? [y/n]: ")
         if (rho == "y") {
             your_rho <- readline(prompt = "Enter your own choice of rho: ")
             rho_group_1_opt <- as.numeric(your_rho)
             print(rho_group_1_opt)
-        } else if (rho == "n") {
-        rho_based_on_rule <- readline(prompt = "rho based on minimum rule/ rho based on one standard error rule [m/o]: ")
+        } else if (rho != "y") {
+        rho_based_on_rule <- readline(prompt = "rho based on minimum rule/ rho based on one standard error rule (Default: o) [m/o]: ")
             if (rho_based_on_rule == "m") {
             rho_group_1_opt <- min_rule
             print(rho_group_1_opt)
-            } else if (rho_based_on_rule == "o") {                # select rho based on one standard rule
+            } else if (rho_based_on_rule != "m") {                # select rho based on one standard rule
             rho_group_1_opt <- max(rho_one_standard)
             print(rho_group_1_opt)
             }
@@ -144,17 +144,17 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
         print("The list of rhos for group 2:")
         print(rev(rho))
 
-        rho <- readline("Choose your own regularization parameter rho for group 2? [y/n]: ")
+        rho <- readline("Choose your own regularization parameter rho for group 2 (Default: n)? [y/n]: ")
         if (rho == "y") {
             your_rho <- readline(prompt = "Enter your own choice of rho: ")
             rho_group_2_opt <- as.numeric(your_rho)
             print(rho_group_2_opt)
-        } else if (rho == "n") {
-            rho_based_on_rule <- readline(prompt = "rho based on minimum rule/ rho based on one standard error rule [m/o]: ")
+        } else if (rho != "y") {
+            rho_based_on_rule <- readline(prompt = "rho based on minimum rule/ rho based on one standard error rule (Default: o) [m/o]: ")
             if (rho_based_on_rule == "m") {
                 rho_group_2_opt <- min_rule
                 print(rho_group_2_opt)
-            } else if (rho_based_on_rule == "o") {
+            } else if (rho_based_on_rule != "m") {
                 rho_group_2_opt <- max(rho_one_standard)
                 print(rho_group_2_opt)
             }
@@ -181,7 +181,8 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
         diff[1:10, 1:10]
 
         ## Permutation test using partial correlation
-        num_of_permutations_pc <- readline(prompt = "Enter your desired number of permutations to build differential network using partial correlation [Recommended: 1000]: ")
+        num_of_permutations_pc <- readline(prompt = "Enter your desired number of permutations to build differential network using partial correlation [Default: 1000]: ")
+        if (num_of_permutations_pc =="") {num_of_permutations_pc <- 1000}
         m <- as.numeric(num_of_permutations_pc)
         diff_p <- permutation_pc(m, p, n_group_1, n_group_2, data_group_1, data_group_2, rho_group_1_opt, rho_group_2_opt)
         rm(m, thres, rho_group_1_opt, rho_group_2_opt, num_of_permutations_pc)
@@ -211,7 +212,8 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
         diff[1:10, 1:10]
 
         # Permutation test
-        num_of_permutations_c <- readline(prompt = "Enter your desired number of permutations to build differential network using correlation [Recommended: 1000]: ")
+        num_of_permutations_c <- readline(prompt = "Enter your desired number of permutations to build differential network using correlation [Default: 1000]: ")
+        if (num_of_permutations_c =="") {num_of_permutations_c <- 1000}
         m <- as.numeric(num_of_permutations_c)
         diff_p <- permutation_cor(m, p, n_group_1, n_group_2, data_group_1, data_group_2, type_of_cor = method)
         rm(m, thres, num_of_permutations_c)
