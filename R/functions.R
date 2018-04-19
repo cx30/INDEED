@@ -280,7 +280,7 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
     dn_score <- compute_dns(binary_link, z_score)
 
 
-    indeed_df <- cbind(pvalue, rowSums(abs(binary_link)), dn_score )
+    indeed_df <- cbind(round(pvalue, 2), rowSums(abs(binary_link)), round(dn_score, 1))
 
 
     # save the p-value, node degree and activity score of each biomarker candidate
