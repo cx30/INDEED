@@ -268,9 +268,12 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
         # Calculate p-values using logistic regression if p-values are not provided by users
         pvalue <- pvalue_logit(x, class_label, id)
         p.value <- pvalue$p.value
+        row.names(pvalue)<-NULL
     } else {     # If the p-value matrix is provided
         pvalue <- read.table(p_val, sep = ",", header = TRUE)
         p.value <- pvalue$p.value           # Extract p-values from the table provided
+        row.names(pvalue)<-NULL
+
     }
 
 
