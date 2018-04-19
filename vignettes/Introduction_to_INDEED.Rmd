@@ -185,7 +185,7 @@ rho based on minimum rule/ rho based on one standard error rule [m/o]: o
 ```
 
 ```
-Enter your desired number of permutations to build differential network using partial correlation: 1000
+Enter your desired number of permutations to build differential network using partial correlation [Recommended: 1000]: 1000
 ```
 
 The table below is part of the output:

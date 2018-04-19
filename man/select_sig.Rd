@@ -33,7 +33,6 @@ A method that integrates differential expression (DE) analysis
   survival time prediction.
 }
 \examples{
-select_sig(x = Met_GU, class_label = Met_Group_GU, id = Met_name_GU,
-                                     partial = NULL, method = NULL, p_val = NULL)
+select_sig(Met_GU, Met_Group_GU, Met_name_GU, partial = TRUE)
 
 }
