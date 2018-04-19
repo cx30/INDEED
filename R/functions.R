@@ -285,7 +285,7 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
 
     indeed_df <- cbind(pvalue, rowSums(abs(binary_link)), dn_score )
 
-
+    colnames(indeed_df) <- c("ID", "P-value", "Node Degree", "Activity Score")
 
     write.table(indeed_df, file = "INDEED_result.csv", sep=",", quote = FALSE,
         row.names = FALSE)
