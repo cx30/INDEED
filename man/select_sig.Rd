@@ -35,4 +35,5 @@ A method that integrates differential expression (DE) analysis
 \examples{
 select_sig(Met_GU, Met_Group_GU, Met_name_GU, partial = TRUE)
 
+
 }
