@@ -58,7 +58,7 @@ In this case, the sparse differential network is based on partial correlation an
 
 
 
-```{r, echo=FALSE, results='hide', message=FALSE, fig.height=5, fig.width=6.5}
+```{r, echo=FALSE, message=FALSE, fig.height=5, fig.width=6.5}
 ## Draw error curve
 devtools::load_all()
 set.seed(100)
