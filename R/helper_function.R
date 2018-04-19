@@ -225,8 +225,8 @@ pvalue_logit <- function(x, class_label, Met_name) {
     glm.fit <- glm(Class ~. , family = "binomial", data = X_df)
     ## Sort metabolites based on their p-values
     pvalue <- summary(glm.fit)$coefficients[,4][2:ncol(X_df)]
-    pvalue <- data.frame("ID" = Met_name, "p.value" = pvalue)
-    return(pvalue)
+    pvalue_df <- data.frame("ID" = Met_name, "p.value" = pvalue)
+    return(pvalue_df)
 }
 
 
