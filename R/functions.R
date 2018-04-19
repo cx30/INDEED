@@ -278,15 +278,15 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
     z_score <- abs(qnorm(1 - p.value/2))
     # calculate differntial network score
     dn_score <- compute_dns(binary_link, z_score)
-    p.value <- lapply(p.value, round, 2)
+    pvalue <- lapply(p.value, round, 2)
     dn_score <-lapply(dn_score, round, 1)
 
-    indeed_df <- cbind(p.value, rowSums(abs(binary_link)), dn_score )
+    indeed_df <- cbind(pvalue, rowSums(abs(binary_link)), dn_score )
 
 
     # save the p-value, node degree and activity score of each biomarker candidate
     write.table(indeed_df, file = "INDEED_result.csv", sep=",", quote = FALSE,
-        row.names = FALSE, col.names = c("ID", "P-value", "Node Degree", "Activity Score"))
+        row.names = FALSE) ##col.names = c("ID", "P-value", "Node Degree", "Activity Score"))
 }
 
 
