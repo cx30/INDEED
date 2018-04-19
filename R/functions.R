@@ -13,6 +13,8 @@
 #' @param p_val a path to either a data frame or matrix that contains p-values
 #'    or NULL.
 #'
+#' @examples select_sig(Met_GU, Met_Group_GU, Met_name_GU, partial = TRUE)
+#'
 #' @inheritParams compute_cor
 #' @inheritParams compute_par
 #' @inheritParams compute_dns
@@ -28,9 +30,6 @@
 #' @return A .csv file containing the p-value, node degree, and activity score
 #'    for each biomarker candidate
 #'
-#' @examples
-#' select_sig(x = Met_GU, class_label = Met_Group_GU, id = Met_name_GU,
-#'                                      partial = NULL, method = NULL, p_val = NULL)
 #'
 #' @importFrom glasso glasso
 #' @importFrom utils write.csv read.table write.table txtProgressBar setTxtProgressBar
@@ -182,7 +181,7 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
         diff[1:10, 1:10]
 
         ## Permutation test using partial correlation
-        num_of_permutations_pc <- readline(prompt = "Enter your desired number of permutations to build differential network using partial correlation [Default: 1000]: ")
+        num_of_permutations_pc <- readline(prompt = "Enter your desired number of permutations to build differential network using partial correlation [Recommended: 1000]: ")
         m <- as.numeric(num_of_permutations_pc)
         diff_p <- permutation_pc(m, p, n_group_1, n_group_2, data_group_1, data_group_2, rho_group_1_opt, rho_group_2_opt)
         rm(m, thres, rho_group_1_opt, rho_group_2_opt, num_of_permutations_pc)
@@ -212,7 +211,7 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
         diff[1:10, 1:10]
 
         # Permutation test
-        num_of_permutations_c <- readline(prompt = "Enter your desired number of permutations to build differential network using correlation [Default: 1000]: ")
+        num_of_permutations_c <- readline(prompt = "Enter your desired number of permutations to build differential network using correlation [Recommended: 1000]: ")
         m <- as.numeric(num_of_permutations_c)
         diff_p <- permutation_cor(m, p, n_group_1, n_group_2, data_group_1, data_group_2, type_of_cor = method)
         rm(m, thres, num_of_permutations_c)
