@@ -15,6 +15,7 @@
 #'
 #' @examples select_sig(Met_GU, Met_Group_GU, Met_name_GU, partial = TRUE)
 #'
+#'
 #' @inheritParams compute_cor
 #' @inheritParams compute_par
 #' @inheritParams compute_dns
@@ -30,7 +31,7 @@
 #' @return A .csv file containing the p-value, node degree, and activity score
 #'    for each biomarker candidate
 #'
-#'
+#' @import devtools
 #' @importFrom glasso glasso
 #' @importFrom utils write.csv read.table write.table txtProgressBar setTxtProgressBar
 #' @importFrom stats qnorm cor quantile var sd glm
