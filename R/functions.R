@@ -288,7 +288,7 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
 
 
     write.table(indeed_df, file = "INDEED_result.csv", sep=",", quote = FALSE,
-        row.names = FALSE, col.names = c("Index", "ID", "P-value", "Node Degree", "Activity Score"))
+        row.names = FALSE)
 }
 
 
