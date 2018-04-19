@@ -278,7 +278,7 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
     z_score <- abs(qnorm(1 - p.value/2))
     # calculate differntial network score
     dn_score <- compute_dns(binary_link, z_score)
-    pvalue <- lapply(p.value, round, 2)
+    pvalue$p.value <- lapply(pvalue$p.value, round, 2)
     dn_score <-lapply(dn_score, round, 1)
 
     indeed_df <- cbind(pvalue, rowSums(abs(binary_link)), dn_score )
