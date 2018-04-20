@@ -288,7 +288,7 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
     indeed_df$P_value <- lapply(indeed_df$P_value, round, 3)
     indeed_df$Activity_Score <- lapply(indeed_df$Activity_Score, round, 1)
     indeed_df <- apply(indeed_df, 2, as.character)
-    write.table(indeed_df, file = "INDEED_result.csv", sep=",", quote = FALSE,
+    write.table(indeed_df, file = "INDEED_result.csv", quote = FALSE,
         row.names = FALSE)
 }
 
