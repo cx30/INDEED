@@ -1,0 +1,37 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# INDEED
+
+The goal of INDEED is to ...
+
+## Installation
+
+You can install INDEED from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("devtools")
+devtools::install_github("cx30/INDEED")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example, echo=FALSE, results='hide'}
+library(INDEED)
+select_sig(Met_GU, Met_Group_GU, Met_name_GU, partial = TRUE)
+```
+
+

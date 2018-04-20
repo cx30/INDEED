@@ -24,8 +24,7 @@ to be computed. One of "pearson" (default) or "spearman".}
 or NULL.}
 }
 \value{
-A .csv file containing the p-value, node degree, and activity score
-   for each biomarker candidate
+data frames INDEED_result and Met_dn
 }
 \description{
 A method that integrates differential expression (DE) analysis
