@@ -1,10 +1,10 @@
 ---
-title: "Using the INDEED package to select biomarker candidates"
-author: "Chaohui Xu"
+title: "INDEED R package for cancer biomarker candidate selection"
+author: "Chaohui Xu and Yiming Zuo"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Using the INDEED package to select biomarker candidates}
+  %\VignetteIndexEntry{INDEED R package for cancer biomarker candidate selection}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,13 +15,13 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
-The biomarker candidates selected by **INDEED** lead to more accurate survival time prediction compared with the biomarker candidates selected by differential expression (DE) analysis and differential network (DN) analysis.
+The biomarker candidates selected by **INDEED** lead to more accurate survival time prediction compared with those selected by differential expression (DE) analysis and differential network (DN) analysis.
 
 ## Introduction
-Differential expression (DE) analysis is commonly used to identify biomarker candidates that have significant changes in their expression levels between distinct biological groups. One drawback of DE analysis is that it only considers the changes on single biomolecular level. In differential network (DN) analysis, network is typically built based on the correlation and biomarker candidates are selected by investigating the network topology. However, correlation tends to generate over-complicated networks and the selection of biomarker candidates purely based on network topology ignores the changes on single biomolecule level. Thus, I have created the INDEED package that integrates DE and DN. 
+Differential expression (DE) analysis is commonly used to identify biomarker candidates that have significant changes in their expression levels between distinct biological groups. One drawback of DE analysis is that it only considers the changes on single biomolecular level. In differential network (DN) analysis, network is typically built based on the correlation and biomarker candidates are selected by investigating the network topology. However, correlation tends to generate over-complicated networks and the selection of biomarker candidates purely based on network topology ignores the changes on single biomolecule level. Thus, we have proposed a novel method INDEED, which considers both the changes on single biomolecular and network levels by integrating DE and DN analysis. INDEED has been published in Methods journal (PMID: 27592383). This is the R package that implements the algorithm. 
 
 
-This R package will output a csv. file containing information such as p-values, node degree and activity score for each biomolecule. A higher activity score indicates that the corresponding biomolecule has more neighbors connceted in the differential network and their p-values are more statistically significant. However, the choices for the biomarker candidate selection are highly dependent on the users. 
+This R package will generate a csv file containing information such as p-values, node degree and activity score for each biomolecule. A higher activity score indicates that the corresponding biomolecule has more neighbors connceted in the differential network and their p-values are more statistically significant. It will also generate a csv file for the differential network created by INDEED. 
 
 The **INDEED** package doesn't get loaded automatically, so remember to load it first:
 
@@ -32,17 +32,17 @@ library(INDEED)
 
 
 ## Using the function `select_sig()` 
-To use the function `sig_select()`, users will have these data sets in hand:
+To use the function `sig_select()`, users will need to have these data sets in hand:
 
-- (**x**) A data frame that contains the expression level of individual biomolecule from two biologically disparate groups
-- (**class_label**) A binary array with group 1: 0; group 2: 1
+- (**x**) A data frame that contains the expression level of individual biomolecule from two biologically disparate groups (p * n)
+- (**class_label**) A binary array with group 1 labeled as 0 and  group 2 as 1
 - (**id**) An array that includes the corresponding ID for each biomolecule 
-- (**p_val**) The path to .csv file containing p-values obtained from DE analysis (optional)
+- (**p_val**) The path to csv file containing p-values obtained from DE analysis (optional)
 
 The demo data is presented in the **Demo Data** section below. It will be automatically loaded with the package.
 
 
-Now, users can implement `select_sig()` to see how it works within sample data sets. One good thing about this package is that it gives users great flexibility. For example, although it is known that correlation tends to generate over-complicated networks, the `select_sig()` will still let users to choose between using correlation or partial correlation to generate networks. Setting `partial = TRUE` will generate the sparse differential network using partial correlation. By setting `partial = FALSE`, users will get network based on correlation. However, If users forgot to specify the `partial` parameter, there will be an error message: `Error in if (partial == TRUE) { : argument is of length zero`. In addtion, once `partial = TRUE` is specified, users will be able to interact with console to select their desired regularization parameter **rho** in order to obtain the sparse differential network. Users will be prompted to choose their own **rho**. If answered [n] (Default), another question will pop up asking the users whether they want to select the **rho** based on the minimum rule [m] or one standard error rule [o] (Default). Also, network generated based on correlation can be either Pearson or Spearman correlation. The default is Pearson correlation. `method = "spearman"` will produce a Spearman correlation matrix. For both correlation and partial correlation, users get to determine the permutation times based on their preferences. 
+Now, users can test `select_sig()` to see how it works within sample data sets. One good thing about this package is that it gives users great flexibility. For example, although correlation tends to generate over-complicated networks,  `select_sig()` still allows users to choose between using correlation or partial correlation to generate networks. Setting `partial = TRUE` will generate a sparse differential network using partial correlation. By setting `partial = FALSE`, users will get network based on correlation. If users forgot to specify the `partial` parameter, there will be an error message: `Error in if (partial == TRUE) { : argument is of length zero}`. In addtion, once `partial = TRUE` is specified, users will be able to interact with console to select their desired regularization parameter **rho** in order to obtain the sparse differential network. If answered [n] (Default), another question will pop up asking the users whether they want to select the **rho** based on the minimum rule [m] or one standard error rule [o] (Default). Also, network generated based on correlation can be either Pearson or Spearman correlation. The default is Pearson correlation. `method = "spearman"` will use Spearman instead. For both correlation and partial correlation, users get to determine the permutation times based on their preferences. 
 
 Remember, a file containing p-values is optional as p-values could be calculated using logistic regression if **p_val** is set to NULL or not specified.
 
@@ -258,7 +258,7 @@ Also, if the users want the p-values to be calculated for them without providing
 ```
 select_sig(x = Met_GU, class_label = Met_Group_GU, id = Met_name_GU, partial = FALSE)
 ```
-By calling above function, the differential network is obtained based on Pearson correlation coefficient. And the table below is part of the csv. file output.
+By calling the above function, the differential network is obtained based on Pearson correlation coefficient. And the table below is part of the csv file output.
 
 ```{r, echo=FALSE, results='asis'}
 x <- read.csv("../inst/INDEED_result_pearson.csv", header = FALSE)
@@ -270,7 +270,7 @@ knitr::kable(head(x, 11))
 ```
 select_sig(x = Met_GU, class_label = Met_Group_GU, Met_name = Met_name_GU, partial = FALSE, method = "spearman", p_val = "data/pvalue_M_GU.csv")
 ```
-By calling above function, the differential network is obtained based on Spearman correlation coefficient. And the table below is part of the csv. file output.
+By calling the above function, the differential network is obtained based on Spearman correlation coefficient. And the table below is part of the csv file output.
 
 ```{r, echo=FALSE, results='asis'}
 x <- read.csv("../inst/INDEED_result_spearman.csv", header = FALSE)
