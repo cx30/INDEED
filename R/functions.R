@@ -284,7 +284,7 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
 
     indeed_df <- cbind(pvalue, rowSums(abs(binary_link)), dn_score )
 
-    colnames(indeed_df) <- c("ID", "P_value", "Node Degree", "Activity_Score")
+    colnames(indeed_df) <- c("MetID", "P_value", "Node Degree", "Activity_Score")
     indeed_df$P_value <- lapply(indeed_df$P_value, round, 3)
     indeed_df$Activity_Score <- lapply(indeed_df$Activity_Score, round, 1)
     indeed_df <- apply(indeed_df, 2, as.character)
