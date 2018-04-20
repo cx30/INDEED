@@ -28,8 +28,7 @@
 #'
 #'
 #'
-#' @return A .csv file containing the p-value, node degree, and activity score
-#'    for each biomarker candidate
+#' @return data frames INDEED_result and Met_dn
 #'
 #' @import devtools
 #' @importFrom glasso glasso
@@ -89,13 +88,13 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
         print("The list of rhos for group 1:")
         print(rev(rho))
 
-        rho <- readline("Choose your own regularization parameter rho for group 1 (Default: n)? [y/n]: ")
+        rho <- readline("Choose your own regularization parameter rho for group 1? [y/n]: ")
         if (rho == "y") {
             your_rho <- readline(prompt = "Enter your own choice of rho: ")
             rho_group_1_opt <- as.numeric(your_rho)
             print(rho_group_1_opt)
         } else if (rho != "y") {
-        rho_based_on_rule <- readline(prompt = "rho based on minimum rule/ rho based on one standard error rule (Default: o) [m/o]: ")
+        rho_based_on_rule <- readline(prompt = "rho based on minimum rule/ rho based on one standard error rule [m/o]: ")
             if (rho_based_on_rule == "m") {
             rho_group_1_opt <- min_rule
             print(rho_group_1_opt)
@@ -145,13 +144,13 @@ select_sig <- function(x = NULL, class_label = NULL, id = NULL,
         print("The list of rhos for group 2:")
         print(rev(rho))
 
-        rho <- readline("Choose your own regularization parameter rho for group 2 (Default: n)? [y/n]: ")
+        rho <- readline("Choose your own regularization parameter rho for group 2? [y/n]: ")
         if (rho == "y") {
             your_rho <- readline(prompt = "Enter your own choice of rho: ")
             rho_group_2_opt <- as.numeric(your_rho)
             print(rho_group_2_opt)
         } else if (rho != "y") {
-            rho_based_on_rule <- readline(prompt = "rho based on minimum rule/ rho based on one standard error rule (Default: o) [m/o]: ")
+            rho_based_on_rule <- readline(prompt = "rho based on minimum rule/ rho based on one standard error rule [m/o]: ")
             if (rho_based_on_rule == "m") {
                 rho_group_2_opt <- min_rule
                 print(rho_group_2_opt)
