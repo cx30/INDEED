@@ -32,13 +32,17 @@ devtools::install_github("cx30/INDEED")
 
 ## Usage
 
-knitr::opts_knit$set(progress=FALSE)
 
-```{r example, eval=TRUE, quiet=TRUE}
-
+```{r example, eval=FALSE}
 library(INDEED)
 
+# Example 1:
+# Using partial correlation to obtain sparse differential network
 select_sig(Met_GU, Met_Group_GU, Met_name_GU, partial = TRUE)
+
+# Example 2:
+# Using Spearman correlation to obtain differential network
+select_sig(Met_GU, Met_Group_GU, Met_name_GU, partial = FALSE, method = "spearman")
 ```
 
 
